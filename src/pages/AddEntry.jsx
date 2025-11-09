@@ -48,6 +48,9 @@ const AddEntry = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen p-4 sm:p-6 md:p-8 overflow-y-hidden">
+      <h2 className="text-xl font-bold text-gray-800 mb-6 text-center md:text-left">
+        Add New Household Record
+      </h2>
       <div
         className="
           bg-white shadow-lg rounded-2xl 
@@ -57,10 +60,6 @@ const AddEntry = () => {
           md:max-w-none
         "
       >
-        <h2 className="text-xl font-semibold text-gray-800 mb-6 text-center md:text-left">
-          Add New Household Record
-        </h2>
-
         <form
           onSubmit={handleSaveOffline}
           className="space-y-4 md:grid md:grid-cols-2 md:gap-6"

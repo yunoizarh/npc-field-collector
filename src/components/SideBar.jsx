@@ -9,6 +9,7 @@ import {
   LogOut,
 } from "lucide-react";
 import npcLogo2 from "../assets/npc-logo2.webp";
+import npcLogo3 from "../assets/npc-logo3.png";
 const Sidebar = ({
   isSidebarOpen,
   setIsSidebarOpen,
@@ -59,7 +60,7 @@ const Sidebar = ({
           {/* Collapse/Expand Button (Desktop Only) */}
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className={`p-1 rounded-lg hover:bg-gray-100 hidden md:block ${
+            className={` rounded-lg hover:bg-gray-100 hidden md:block ${
               !isSidebarOpen ? "ml-auto" : ""
             }`}
             aria-label={isSidebarOpen ? "Collapse Sidebar" : "Expand Sidebar"}
@@ -67,7 +68,10 @@ const Sidebar = ({
             {isSidebarOpen ? (
               <ChevronsLeft className="w-6 h-6" />
             ) : (
-              <ChevronsRight className="w-6 h-6" />
+              <div className="flex items-center">
+                <img src={npcLogo3} alt="npc logo" className="size-10" />
+                <ChevronsRight className="size-16" />
+              </div>
             )}
           </button>
 

@@ -46,7 +46,7 @@ const SyncStatus = () => {
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      <h2 className="text-2xl font-semibold mb-6">SYNC DASHBOARD</h2>
+      <h2 className="text-2xl font-bold mb-6">Sync Dashboard</h2>
 
       {/* Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -81,8 +81,22 @@ const SyncStatus = () => {
       </div>
 
       {/* Sync History */}
-      <div className="mb-6">
-        <h3 className="text-xl font-semibold mb-2">Sync History</h3>
+      <div className="mb-2">
+        <div className="flex justify-between items-center mb-6">
+          {" "}
+          <h3 className="text-xl font-semibold mb-2">Sync History</h3>
+          <button
+            onClick={handleSyncNow}
+            disabled={isSyncing}
+            className={`px-6 py-2 rounded-lg font-semibold text-white ${
+              isSyncing
+                ? "bg-gray-400 cursor-not-allowed animate-pulse"
+                : "bg-green-500 hover:bg-green-600"
+            }`}
+          >
+            {isSyncing ? "Syncing..." : "Sync Now"}
+          </button>
+        </div>
         <ul className="bg-white rounded-lg shadow divide-y divide-gray-200">
           {syncHistory.map((item, index) => (
             <li key={index} className="p-4 flex justify-between">
@@ -96,17 +110,6 @@ const SyncStatus = () => {
       </div>
 
       {/* Sync Now Button */}
-      <button
-        onClick={handleSyncNow}
-        disabled={isSyncing}
-        className={`px-6 py-2 rounded-lg font-semibold text-white ${
-          isSyncing
-            ? "bg-gray-400 cursor-not-allowed animate-pulse"
-            : "bg-green-500 hover:bg-green-600"
-        }`}
-      >
-        {isSyncing ? "Syncing..." : "Sync Now"}
-      </button>
     </div>
   );
 };

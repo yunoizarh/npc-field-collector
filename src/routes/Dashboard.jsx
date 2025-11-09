@@ -5,7 +5,10 @@ import MyRecords from "../pages/MyRecords";
 import MapView from "../pages/MapView";
 import SyncStatus from "../pages/SyncStatus";
 import { RefreshCcw } from "lucide-react";
-const mockUser = { name: "John Doe" };
+import npcLogo3 from "../assets/npc-logo3.png";
+import { Menu } from "lucide-react";
+
+const mockUser = { name: "Maimunah" };
 const mockSyncStatus = { lastSync: "2 hours ago", status: "pending" };
 
 const Dashboard = () => {
@@ -46,14 +49,15 @@ const Dashboard = () => {
       >
         {/* Header */}
         <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-10">
-          <div className="flex items-center justify-between px-6 py-4">
+          <div className="flex items-center justify-between sm:px-6 py-4">
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="p-2 rounded-lg hover:bg-gray-100 md:hidden"
+                className="p-2 rounded-lg hover:bg-gray-100 md:hidden flex items-center"
                 aria-label="Toggle Sidebar"
               >
-                ☰
+                <img src={npcLogo3} alt="" className="size-12" />
+                <Menu />
               </button>
               <h1 className="text-xl font-semibold text-gray-800">
                 Welcome, {mockUser.name}
@@ -63,7 +67,7 @@ const Dashboard = () => {
               <span>
                 <RefreshCcw />
               </span>
-              <span className="hidden sm:block">Sync Now</span>
+              <span className="hidden sm:block ">Sync Now</span>
             </button>
           </div>
         </header>
