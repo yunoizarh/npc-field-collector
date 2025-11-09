@@ -7,6 +7,7 @@ import SyncStatus from "../pages/SyncStatus";
 import { RefreshCcw } from "lucide-react";
 import npcLogo3 from "../assets/npc-logo3.png";
 import { Menu } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
 const mockUser = { name: "Maimunah" };
 const mockSyncStatus = { lastSync: "2 hours ago", status: "pending" };
@@ -14,6 +15,7 @@ const mockSyncStatus = { lastSync: "2 hours ago", status: "pending" };
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeSection, setActiveSection] = useState("add-entry");
+  const { isOnline } = useAuth();
 
   const renderPageContent = () => {
     switch (activeSection) {
@@ -63,6 +65,11 @@ const Dashboard = () => {
                 Welcome, {mockUser.name}
               </h1>
             </div>
+            {isOnline ? (
+              <span className="text-green-600">✅ Online</span>
+            ) : (
+              <span className="text-yellow-500">📴 Offline Mode</span>
+            )}
             <button className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
               <span>
                 <RefreshCcw />

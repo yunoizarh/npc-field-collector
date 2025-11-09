@@ -46,6 +46,29 @@ const AddEntry = () => {
     alert("Household record saved offline!");
   };
 
+  // Example submit------------ save data locally if it's not online
+  // import { saveEntryLocally } from "./offlineStore";
+
+  // async function submitEntry(formData) {
+  //   if (navigator.onLine) {
+  //     try {
+  //       const res = await fetch("/api/entries", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(formData),
+  //       });
+  //       if (!res.ok) throw new Error("Server error");
+  //       // optionally show success
+  //     } catch (err) {
+  //       // network/server failed — save locally
+  //       await saveEntryLocally(formData);
+  //     }
+  //   } else {
+  //     // offline — store locally
+  //     await saveEntryLocally(formData);
+  //   }
+  // }
+
   return (
     <div className="bg-gray-50 min-h-screen p-4 sm:p-6 md:p-8 overflow-y-hidden">
       <h2 className="text-xl font-bold text-gray-800 mb-6 text-center md:text-left">

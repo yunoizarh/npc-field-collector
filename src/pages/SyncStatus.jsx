@@ -55,28 +55,28 @@ const SyncStatus = () => {
             <p className="text-gray-500">Total Entries</p>
             <p className="text-xl font-bold">{totalEntries}</p>
           </div>
-          <BarChart className="text-blue-500 w-8 h-8" />
+          <BarChart className="text-blue-500 size-10" />
         </div>
         <div className="p-4 bg-white rounded-lg shadow flex items-center justify-between">
           <div>
             <p className="text-gray-500">Synced Entries</p>
             <p className="text-xl font-bold">{syncedEntries}</p>
           </div>
-          <CheckCircle className="text-green-500 w-8 h-8" />
+          <CheckCircle className="text-green-500 size-10" />
         </div>
         <div className="p-4 bg-white rounded-lg shadow flex items-center justify-between">
           <div>
             <p className="text-gray-500">Pending Entries</p>
             <p className="text-xl font-bold">{pendingEntries}</p>
           </div>
-          <Clock className="text-yellow-500 w-8 h-8" />
+          <Clock className="text-yellow-500 size-10" />
         </div>
         <div className="p-4 bg-white rounded-lg shadow flex items-center justify-between">
           <div>
             <p className="text-gray-500">Last Sync</p>
             <p className="text-xl font-bold">{lastSync}</p>
           </div>
-          <Clock1 className="text-purple-500 w-8 h-8" />
+          <Clock1 className="text-purple-500 size-10" />
         </div>
       </div>
 

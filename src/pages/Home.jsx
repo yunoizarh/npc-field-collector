@@ -1,8 +1,8 @@
-import Navbar from "./NavBar";
-import HeroSection from "./HeroSection";
-import FeaturesSection from "./FeaturesSection";
-import DemoSection from "./DemoSection";
-import FooterSection from "./Footer";
+import Navbar from "../components/NavBar";
+import HeroSection from "../components/HeroSection";
+import FeaturesSection from "../components/FeaturesSection";
+import DemoSection from "../components/DemoSection";
+import FooterSection from "../components/Footer";
 
 const Home = () => {
   return (

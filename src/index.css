@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.loader {
+  width: 32px;
+  height: 16px;
+  display: flex;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  flex: 1;
+  background: #3fb8af;
+  transform-origin: top right;
+  animation: l10-1 2s infinite;
+}
+.loader:after {
+  background: #ff3d7f;
+  transform-origin: top left;
+  animation-delay: 0.25s;
+}

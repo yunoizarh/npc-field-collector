@@ -1,8 +1,15 @@
 import { Menu, X, ArrowRight, BookOpen } from "lucide-react"; // Using Lucide for icons
 import bgImage from "../assets/npc-banner-1.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import npcLogo2 from "../assets/npc-logo2.webp";
+import { useAuth } from "../context/AuthContext";
 const HeroSection = () => {
+  const { isLoggedIn } = useAuth();
+  // console.log(loggedInUser);
+  const navigate = useNavigate();
+  const NavigateLocation = () => {
+    isLoggedIn ? navigate("/dashboard") : navigate("/signin");
+  };
   return (
     <header
       className="relative w-full h-screen  bg-cover bg-center"
@@ -26,7 +33,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                to="/dashboard"
+                onClick={NavigateLocation}
                 className="group inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-xl text-white bg-green-600 shadow-lg shadow-green-600/50 hover:bg-green-700 transition duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50"
               >
                 Go to Dashboard

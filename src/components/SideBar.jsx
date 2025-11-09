@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import npcLogo2 from "../assets/npc-logo2.webp";
 import npcLogo3 from "../assets/npc-logo3.png";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 const Sidebar = ({
   isSidebarOpen,
   setIsSidebarOpen,
@@ -17,6 +19,7 @@ const Sidebar = ({
   setActiveSection,
   mockSyncStatus,
 }) => {
+  const navigate = useNavigate();
   const navItems = [
     { id: "add-entry", label: "Add Entry", icon: <ListPlus /> },
     { id: "my-records", label: "My Records", icon: <Files /> },
@@ -33,6 +36,15 @@ const Sidebar = ({
     }
   };
 
+  const { signOutUser } = useAuth();
+  const handleSignOut = async () => {
+    const { success, error } = await signOutUser();
+    if (success) {
+      navigate("/signin");
+    } else {
+      console.log(error.message);
+    }
+  };
   return (
     <>
       {/* 1. Sidebar (Desktop & Mobile) */}
@@ -152,9 +164,10 @@ const Sidebar = ({
         {/* Logout */}
         <button
           className={`absolute bottom-4 left-0 right-0 mx-4 flex items-center px-4 py-3 
-            text-gray-600 hover:bg-gray-50 rounded-lg transition-colors duration-200
+            text-red-500 hover:bg-gray-50 rounded-lg transition-colors duration-200
             ${!isSidebarOpen ? "justify-center" : "space-x-3"}
             `}
+          onClick={handleSignOut}
         >
           <LogOut className="w-5 h-5" />
           {isSidebarOpen && <span className="ml-3 font-medium">Logout</span>}

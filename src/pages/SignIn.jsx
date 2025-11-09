@@ -1,8 +1,9 @@
 import React, { useActionState, useState } from "react";
 import { Users, CreditCard, Lock } from "lucide-react"; // Changed Mail to CreditCard for ID representation
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
+import npcLogo3 from "../assets/npc-logo3.png";
+import bgImage from "../assets/npc-banner-1.jpg";
 const SignIn = () => {
   const { signInUser } = useAuth();
 
@@ -21,9 +22,10 @@ const SignIn = () => {
       if (signInError) {
         return new Error(signInError); //array of errors
       }
-
       if (success && data?.session) {
+        console.log(data);
         navigate("/dashboard");
+
         return null;
       }
       return null;
@@ -31,12 +33,14 @@ const SignIn = () => {
     null
   );
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 font-inter">
+    <div
+      className="min-h-screen bg-gray-100 flex items-center justify-center p-4 font-inter bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="absolute inset-0 bg-gray-900 opacity-65"></div>
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl transition-all duration-300 transform hover:shadow-3xl">
         <div className="flex flex-col items-center">
-          <div className="p-3 bg-indigo-600 text-white rounded-full shadow-lg mb-4">
-            <Users className="w-8 h-8" />
-          </div>
+          <img src={npcLogo3} alt="npc logo" className="size-36" />
 
           <h1 className="text-2xl font-bold text-gray-800 mb-6 text-center">
             Sign in to your Enumerator App
@@ -57,8 +61,9 @@ const SignIn = () => {
                 type="email"
                 name="email"
                 placeholder="Employee email"
+                autoComplete="email"
                 // value={employeeId} // State update
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150"
                 required
                 // disabled={loading}
               />
@@ -76,26 +81,34 @@ const SignIn = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
+                autoComplete="password"
                 // value={password}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150"
                 required
               />
             </div>
           </div>
-
+          {error && (
+            <div role="alert" className="text-center text-red-600">
+              {error.message}
+            </div>
+          )}
           {/* Sign In Button */}
           <button
             type="submit"
             // disabled={loading}
-            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out disabled:bg-indigo-400 disabled:cursor-not-allowed"
+            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-sm font-medium text-white bg-[#0d9738] hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out disabled:bg-green-400 disabled:cursor-not-allowed"
           >
-            Sign In
+            {isPending ? "Signing In..." : "Sign In"}
           </button>
         </form>
 
         {/* Sign Up Link */}
         <p className="mt-6 text-center text-sm text-gray-600">
           Don’t have an account?{" "}
+          <Link to="/" className="text-green-800 font-semibold">
+            Sign Up
+          </Link>
         </p>
       </div>
     </div>
